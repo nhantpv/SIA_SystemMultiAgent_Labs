@@ -1,0 +1,58 @@
+== 1.1 sheep-wolves, default sliders
+seed 1: ended at tick 164, wolves 0, sheep 0
+seed 2: ended at tick 225, wolves 0, sheep 0
+seed 3: ended at tick 212, wolves 0, sheep 0
+seed 4: ended at tick 448, wolves 0, sheep 30964
+seed 5: ended at tick 226, wolves 0, sheep 0
+== 1.1 sheep-wolves-grass, defaults (wolf-reproduce 5, wolf-gain 20, sheep-reproduce 4, sheep-gain 4, grass 30): 1000 ticks
+seed 1: tick 1000, wolves 48, sheep 137
+seed 2: tick 1000, wolves 77, sheep 177
+seed 3: tick 1000, wolves 60, sheep 166
+same values, 20 more runs: both alive at tick 1000 in 20 of 20
+== 1.1 sheep-wolves-grass, grass-regrowth-time 100, sheep-gain-from-food 2 (others default)
+seed 1: tick 592, wolves 0, sheep 0
+seed 2: tick 217, wolves 0, sheep 0
+seed 3: tick 795, wolves 0, sheep 0
+seed 4: tick 248, wolves 0, sheep 0
+seed 5: tick 284, wolves 0, sheep 0
+== 1.1 for contrast: greedy wolves (wolf-reproduce 20, wolf-gain 50), grass defaults
+seed 1: tick 1000, wolves 0, sheep 278
+seed 2: tick 1000, wolves 0, sheep 240
+seed 3: tick 1000, wolves 0, sheep 249
+== 1.2 Flocking, one rule switched off at a time
+set to 0: none (defaults) -> alignment 0.98, nearest-neighbour distance 1.05
+set to 0: max-separate-turn -> alignment 0.99, nearest-neighbour distance 0.68
+set to 0: max-align-turn -> alignment 0.03, nearest-neighbour distance 2.08
+set to 0: max-cohere-turn -> alignment 1, nearest-neighbour distance 1.77
+set to 0: separate and cohere (alignment only) -> alignment 0.99, nearest-neighbour distance 1.4
+== 1.3 Segregation, density 95, until nobody is unhappy or 200 ticks
+30% wanted, seed 1: % similar 74.9, ticks 20, % unhappy 0
+30% wanted, seed 2: % similar 73.1, ticks 15, % unhappy 0
+30% wanted, seed 3: % similar 76.1, ticks 19, % unhappy 0
+50% wanted, seed 1: % similar 85.4, ticks 31, % unhappy 0
+50% wanted, seed 2: % similar 85.6, ticks 23, % unhappy 0
+50% wanted, seed 3: % similar 86.8, ticks 26, % unhappy 0
+75% wanted, seed 1: % similar 95.7, ticks 200, % unhappy 7.5
+75% wanted, seed 2: % similar 91.3, ticks 200, % unhappy 15
+75% wanted, seed 3: % similar 87.2, ticks 200, % unhappy 21.8
+80% wanted, seed 1: % similar 50.1, ticks 200, % unhappy 95.3
+80% wanted, seed 2: % similar 50.8, ticks 200, % unhappy 94.6
+80% wanted, seed 3: % similar 51.1, ticks 200, % unhappy 93.9
+== 3.5 density x dawdling, no light, 20 runs, read at tick 500
+cars 10, p-brake 0.2: mean speed 4.81, stopped cars 0
+cars 10, p-brake 0: mean speed 5, stopped cars 0
+cars 40, p-brake 0.2: mean speed 1.05, stopped cars 17.1
+cars 40, p-brake 0: mean speed 1.5, stopped cars 7.5
+== 4 the cost of the light, p-brake 0.2, 20 runs
+cars 10, light false: monitor at tick 500 4.76, averaged over ticks 1-500 4.72
+cars 10, light true: monitor at tick 500 0, averaged over ticks 1-500 2.31
+cars 25, light false: monitor at tick 500 1.99, averaged over ticks 1-500 2.02
+cars 25, light true: monitor at tick 500 0.42, averaged over ticks 1-500 1.09
+cars 50, light false: monitor at tick 500 0.71, averaged over ticks 1-500 0.71
+cars 50, light true: monitor at tick 500 0.45, averaged over ticks 1-500 0.54
+== 5.3 repetitions, p-brake 0.2, no light, 30 runs, mean speed at tick 500
+cars 10: mean 4.74, s 0.175, runs needed for +/-0.05: 13
+cars 25: mean 2.06, s 0.233, runs needed for +/-0.05: 22
+cars 50: mean 0.72, s 0.071, runs needed for +/-0.05: 2
+== question 1: does the jam move backwards? 30 cars, p-brake 0.2, ticks 100-500
+stopped car at x at t+1, and a stopped car at t on: x+1 (ahead) 3698, x (same) 2817, x-1 (behind) 1663

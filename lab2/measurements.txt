@@ -1,0 +1,36 @@
+== 2. through the environment (light off)
+none: 0.9 hard brakes / tick, 0 messages / tick, mean speed 2.04
+brake lights: 0.78 hard brakes / tick, 0 messages / tick, mean speed 2.02
+marks: 0.37 hard brakes / tick, 0 messages / tick, mean speed 1.97
+blackboard: 0.38 hard brakes / tick, 0 messages / tick, mean speed 1.99
+== 2.2 marks: lifetime of a mark
+evaporation 0.05 -> marks: 0.14 hard brakes / tick, 0 messages / tick, mean speed 1.71
+evaporation 0.2 -> marks: 0.35 hard brakes / tick, 0 messages / tick, mean speed 1.96
+evaporation 0.5 -> marks: 0.4 hard brakes / tick, 0 messages / tick, mean speed 2.01
+evaporation 0.8 -> marks: 0.89 hard brakes / tick, 0 messages / tick, mean speed 2.02
+== 3. messages (light off)
+unicast: 0.56 hard brakes / tick, 6.4 messages / tick, mean speed 2
+broadcast: 0.41 hard brakes / tick, 24.6 messages / tick, mean speed 2.01
+== 3.4 messages get lost
+p-loss 0 -> unicast: 0.54 hard brakes / tick, 6.3 messages / tick, mean speed 2
+p-loss 0.5 -> unicast: 0.77 hard brakes / tick, 6 messages / tick, mean speed 2.02
+p-loss 1 -> unicast: 0.86 hard brakes / tick, 5.7 messages / tick, mean speed 2.01
+p-loss 0 -> broadcast: 0.43 hard brakes / tick, 23.2 messages / tick, mean speed 2.01
+p-loss 0.5 -> broadcast: 0.56 hard brakes / tick, 26.8 messages / tick, mean speed 2.01
+p-loss 1 -> broadcast: 0.88 hard brakes / tick, 30.1 messages / tick, mean speed 2.03
+== 4. publish / subscribe (light on)
+none: 0.46 hard brakes / tick, 0 messages / tick, mean speed 1.09
+subscribe: 0.33 hard brakes / tick, 1.1 messages / tick, mean speed 1.1
+== 5.2 request (light on)
+request: 0.64 hard brakes / tick, 0 messages / tick, mean speed 1.41
+ambulance speed, mean of 10 runs: 1.42
+== 6. the table, in the order of results.csv
+none: 0.86 hard brakes / tick, 0 messages / tick, mean speed 2
+brake lights: 0.71 hard brakes / tick, 0 messages / tick, mean speed 2
+marks: 0.37 hard brakes / tick, 0 messages / tick, mean speed 1.96
+blackboard: 0.36 hard brakes / tick, 0 messages / tick, mean speed 1.98
+unicast: 0.56 hard brakes / tick, 6.4 messages / tick, mean speed 2
+broadcast: 0.41 hard brakes / tick, 23.7 messages / tick, mean speed 1.99
+none: 0.45 hard brakes / tick, 0 messages / tick, mean speed 1.09
+subscribe: 0.33 hard brakes / tick, 1.1 messages / tick, mean speed 1.1
+request: 0.67 hard brakes / tick, 0 messages / tick, mean speed 1.5

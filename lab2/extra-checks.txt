@@ -1,0 +1,10 @@
+; Extra checks behind README answers 5 and 6 -- run with: ../tools/nl.sh city-talks.nlogo < extra-checks.txt
+; The trace of section 5.1 was made on a temporary copy of the model with the lab's trace line added in send,
+; then: random-seed 7, light on, talk "request", setup, repeat 60 [ go ].
+set number-of-cars 25 set p-brake 0.2 set max-speed 5 set talk-range 15 set light-period 30 set p-loss 0 set evaporation 0.2
+print "== request: messages per tick, 3 decimals (light on)"
+random-seed 11 set traffic-light? true set talk "request" let ms 0 repeat 10 [ setup repeat 800 [ go set ms ms + sent ] ] print (word "request: messages / tick " precision (ms / 8000) 3)
+print "== answer 5: broadcast, cars that just stopped (= broadcasts) against p-loss (light off)"
+set traffic-light? false set talk "broadcast" foreach [0 0.5 1] [ p -> set p-loss p let stops 0 let ms 0 repeat 10 [ setup repeat 800 [ go set stops stops + count cars with [ speed = 0 and last-speed > 0 ] set ms ms + sent ] ] print (word "broadcast p-loss " p ": cars that just stopped / tick " precision (stops / 8000) 2 ", messages / tick " precision (ms / 8000) 1 ", messages per stop " precision (ms / stops) 1) ] set p-loss 0
+print "== answer 6: where do the hard brakes happen, none vs request (light on)"
+random-seed 5 set traffic-light? true foreach [ "none" "request" ] [ t -> set talk t let near 0 let far 0 let reds 0 repeat 10 [ setup repeat 800 [ let c0 [ color ] of one-of lights go if [ color ] of one-of lights = red and c0 != red [ set reds reds + 1 ] set near near + count cars with [ last-speed - speed >= 3 and distance-ahead 50 <= 6 ] set far far + count cars with [ last-speed - speed >= 3 and distance-ahead 50 > 6 ] ] ] print (word t ": hard brakes / tick within 5 cells before the light " precision (near / 8000) 2 ", elsewhere " precision (far / 8000) 2 ", red phases per 800 ticks " precision (reds / 10) 1) ]

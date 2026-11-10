@@ -1,0 +1,4 @@
+; Section 1.3 -- run with: ../tools/nl.sh "<NetLogo>/models/Sample Models/Social Science/Segregation.nlogox" < runs/segregation.txt
+print "== 1.3 Segregation, density 95, until nobody is unhappy or 200 ticks"
+set density 95
+foreach [30 50 75 80] [ w -> foreach [1 2 3] [ s -> set %-similar-wanted w random-seed s setup while [ ticks < 200 and not all? turtles [ happy? ] ] [ go ] print (word w "% wanted, seed " s ": % similar " precision percent-similar 1 ", ticks " ticks ", % unhappy " precision percent-unhappy 1) ] ]

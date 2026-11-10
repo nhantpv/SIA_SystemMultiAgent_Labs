@@ -1,0 +1,20 @@
+; Lab 2 measurements, run headless with ../tools/nl.sh city-talks.nlogo < experiments.txt
+; Same commands as the Command Center lines of the lab. 25 cars, p-brake 0.2, talk-range 15, light-period 30.
+random-seed 2026
+set number-of-cars 25 set p-brake 0.2 set max-speed 5 set talk-range 15 set light-period 30 set evaporation 0.2 set p-loss 0
+print "== 2. through the environment (light off)"
+set traffic-light? false foreach [ "none" "brake lights" "marks" "blackboard" ] [ t -> set talk t measure 10 ]
+print "== 2.2 marks: lifetime of a mark"
+set talk "marks" foreach [ 0.05 0.2 0.5 0.8 ] [ ev -> set evaporation ev type (word "evaporation " ev " -> ") measure 10 ] set evaporation 0.2
+print "== 3. messages (light off)"
+foreach [ "unicast" "broadcast" ] [ t -> set talk t measure 10 ]
+print "== 3.4 messages get lost"
+foreach [ "unicast" "broadcast" ] [ t -> set talk t foreach [ 0 0.5 1 ] [ p -> set p-loss p type (word "p-loss " p " -> ") measure 10 ] ] set p-loss 0
+print "== 4. publish / subscribe (light on)"
+set traffic-light? true foreach [ "none" "subscribe" ] [ t -> set talk t measure 10 ]
+print "== 5.2 request (light on)"
+set talk "request" measure 10
+let a 0 repeat 10 [ setup repeat 800 [ go ] set a a + ambulance-speed ] print (word "ambulance speed, mean of 10 runs: " precision (a / 10) 2)
+print "== 6. the table, in the order of results.csv"
+set p-loss 0 set traffic-light? false foreach [ "none" "brake lights" "marks" "blackboard" "unicast" "broadcast" ] [ t -> set talk t measure 10 ]
+set traffic-light? true foreach [ "none" "subscribe" "request" ] [ t -> set talk t measure 10 ]

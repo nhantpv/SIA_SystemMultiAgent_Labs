@@ -1,0 +1,10 @@
+talk,light,hard_brakes_per_tick,messages_per_tick,mean_speed
+none,off,0.86,0,2
+brake lights,off,0.71,0,2
+marks,off,0.37,0,1.96
+blackboard,off,0.36,0,1.98
+unicast,off,0.56,6.4,2
+broadcast,off,0.41,23.7,1.99
+none,on,0.45,0,1.09
+subscribe,on,0.33,1.1,1.1
+request,on,0.67,0.043,1.5

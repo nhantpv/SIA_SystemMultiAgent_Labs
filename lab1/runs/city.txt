@@ -1,0 +1,13 @@
+; Sections 3.5, 4 and 5.3 -- run with: ../tools/nl.sh city-in-motion.nlogo < runs/city.txt
+; Section 5.1 (BehaviorSpace) is the experiment "fundamental-diagram" saved in the model.
+set max-speed 5 set light-period 30
+print "== 3.5 density x dawdling, no light, 20 runs, read at tick 500"
+set traffic-light? false foreach [10 40] [ n -> foreach [0.2 0] [ p -> set number-of-cars n set p-brake p let v 0 let nstop 0 foreach range 20 [ s -> random-seed s setup repeat 500 [ go ] set v v + mean [ speed ] of cars set nstop nstop + count cars with [ speed = 0 ] ] print (word "cars " n ", p-brake " p ": mean speed " precision (v / 20) 2 ", stopped cars " precision (nstop / 20) 1) ] ]
+print "== 4 the cost of the light, p-brake 0.2, 20 runs"
+set p-brake 0.2 foreach [10 25 50] [ n -> foreach [false true] [ l -> set number-of-cars n set traffic-light? l let snap 0 let avg 0 foreach range 20 [ s -> random-seed s setup let acc 0 repeat 500 [ go set acc acc + mean [ speed ] of cars ] set snap snap + mean [ speed ] of cars set avg avg + acc / 500 ] print (word "cars " n ", light " l ": monitor at tick 500 " precision (snap / 20) 2 ", averaged over ticks 1-500 " precision (avg / 20) 2) ] ]
+print "== 5.3 repetitions, p-brake 0.2, no light, 30 runs, mean speed at tick 500"
+set traffic-light? false
+foreach [10 25 50] [ n -> set number-of-cars n let xs [] foreach range 30 [ s -> random-seed (1000 + s) setup repeat 500 [ go ] set xs lput mean [ speed ] of cars xs ] let sd standard-deviation xs print (word "cars " n ": mean " precision mean xs 2 ", s " precision sd 3 ", runs needed for +/-0.05: " ceiling ((sd / 0.05) ^ 2)) ]
+print "== question 1: does the jam move backwards? 30 cars, p-brake 0.2, ticks 100-500"
+random-seed 3 set traffic-light? false set number-of-cars 30 set p-brake 0.2 set max-speed 5 setup repeat 100 [ go ]
+let nb 0 let ns 0 let nf 0 repeat 400 [ let s0 [ pxcor ] of cars with [ speed = 0 ] go let s1 [ pxcor ] of cars with [ speed = 0 ] foreach s1 [ x -> if member? ((x + 1) mod 100) s0 [ set nb nb + 1 ] if member? x s0 [ set ns ns + 1 ] if member? ((x - 1) mod 100) s0 [ set nf nf + 1 ] ] ] print (word "stopped car at x at t+1, and a stopped car at t on: x+1 (ahead) " nb ", x (same) " ns ", x-1 (behind) " nf)

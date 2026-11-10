@@ -1,0 +1,9 @@
+== request: messages per tick, 3 decimals (light on)
+request: messages / tick 0.043
+== answer 5: broadcast, cars that just stopped (= broadcasts) against p-loss (light off)
+broadcast p-loss 0: cars that just stopped / tick 2.29, messages / tick 22.8, messages per stop 9.9
+broadcast p-loss 0.5: cars that just stopped / tick 2.49, messages / tick 26, messages per stop 10.4
+broadcast p-loss 1: cars that just stopped / tick 2.8, messages / tick 29.9, messages per stop 10.7
+== answer 6: where do the hard brakes happen, none vs request (light on)
+none: hard brakes / tick within 5 cells before the light 0.05, elsewhere 0.41, red phases per 800 ticks 14
+request: hard brakes / tick within 5 cells before the light 0.07, elsewhere 0.58, red phases per 800 ticks 14.7
