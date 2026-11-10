@@ -11,6 +11,7 @@ NetLogo 7.0.4. The commands I ran are in `experiments.txt` (the Command Center l
 | `results.csv` | the table of section 6 |
 | `experiments.txt`, `measurements.txt` | the commands and their output |
 | `extra-checks.txt`, `extra-checks-output.txt` | the checks behind answers 5 and 6, and the precise `request` cost |
+| `trace-5.1.txt` | the conversation traced in section 5.1, and how it was produced |
 
 ## Results
 

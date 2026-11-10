@@ -1,0 +1,8 @@
+; Section 5.1 trace. Made on a temporary copy of city-talks.nlogo with the lab's trace line added in send,
+; just before ask receiver:
+;   if talk = "request" [ print (word "tick " ticks ": " self " -> " receiver "  " performative " " content) ]
+; then: random-seed 7, 25 cars, p-brake 0.2, talk-range 15, light on, talk "request", setup, repeat 60 [ go ]
+
+tick 51: (car 12) -> (light 25)  request [green]
+tick 52: (light 25) -> (car 12)  agree [green]
+tick 58: (light 25) -> (car 12)  inform [done]
